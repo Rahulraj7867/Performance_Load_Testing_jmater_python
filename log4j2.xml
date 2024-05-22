@@ -1,0 +1,41 @@
+<Configuration status="WARN" packages="org.apache.jmeter.gui.logging">
+
+  <Appenders>
+
+    <!-- The main log file appender to jmeter.log in the directory from which JMeter was launched, by default. -->
+    <File name="jmeter-log" fileName="${sys:jmeter.logfile:-jmeter.log}" append="false">
+      <PatternLayout>
+        <pattern>%d %p %c{1.}: %m%n</pattern>
+      </PatternLayout>
+    </File>
+
+    <!-- Log appender for GUI Log Viewer. See below. -->
+    <GuiLogEvent name="gui-log-event">
+      <PatternLayout>
+        <pattern>%d %p %c{1.}: %m%n</pattern>
+      </PatternLayout>
+    </GuiLogEvent>
+
+  </Appenders>
+
+  <Loggers>
+
+    <!-- Root logger -->
+    <Root level="info">
+      <AppenderRef ref="jmeter-log" />
+      <AppenderRef ref="gui-log-event" />
+    </Root>
+
+    <!-- SNIP -->
+
+    <!--         
+      # Apache HttpClient logging examples
+    -->
+    <!-- # Enable header wire + context logging - Best for Debugging -->
+    <Logger name="org.apache.http" level="debug" />
+    <Logger name="org.apache.http.wire" level="error" />
+    <!-- SNIP -->
+
+  </Loggers>
+
+</Configuration>
