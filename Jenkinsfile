@@ -11,8 +11,8 @@ pipeline {
         GITHUB_TOKEN                      = credentials('ds-github-cred')
         GH_TOKEN                          = "${GITHUB_TOKEN_PSW}"
         BUILD_TIME                        = sh(script: "echo `date +%F-%H-%M-%S`", returnStdout: true).trim()
-        GITHUB_URL                        = "https://github.com/demandscience/lastbounce-ui-plt"
-        GIT_REPO                          = "lastbounce-ui-plt"
+        GITHUB_URL                        = ""
+        GIT_REPO                          = ""
     }
 
     options {
@@ -142,19 +142,19 @@ void switch_branches() {
     switch(GIT_BRANCH) {
         case "DEVELOP":
             
-            HOST        = "app.lastbounce-develop.demandscience-apps.com"
+            HOST        = ".com"
             break
         case "STAGING":
             
-            HOST        = "app.lastbounce-develop.demandscience-apps.com"
+            HOST        = ".com"
             break
         case "PRE-PROD":
             
-            HOST        = "app.lastbounce-develop.demandscience-apps.com"
+            HOST        = ".com"
             break
         case "PROD":
            
-            HOST        = "app.lastbounce-develop.demandscience-apps.com"
+            HOST        = ".com"
             break
         default:
             break
